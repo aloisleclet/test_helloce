@@ -70,6 +70,11 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 /* variables */
 /* main */
 /* line 19, ../sass/screen.scss */
+html, body {
+  overflow: hidden;
+}
+
+/* line 25, ../sass/screen.scss */
 body {
   width: 100%;
   height: 100%;
@@ -78,31 +83,61 @@ body {
   background: linear-gradient(to left, #F09819, #FF512F);
   overflow: hidden;
 }
-/* line 29, ../sass/screen.scss */
+/* line 35, ../sass/screen.scss */
 body .card {
   width: 860px;
   height: auto;
   position: absolute;
-  top: -1000px;
-  left: calc(50% - 430px);
+  top: calc(50vh - (344px / 2));
+  left: 2000px;
   background-color: #ffffff;
   box-shadow: 10px 20px 100px -25px black;
-  overflow: hidden;
-  transition: all ease 3s;
+  transition: all ease 0.7s;
 }
-/* line 45, ../sass/screen.scss */
-body .card.show {
-  top: calc(50% - 25vh);
-}
-/* line 50, ../sass/screen.scss */
-body .card.hide-top {
-  top: -1000px;
-}
-/* line 55, ../sass/screen.scss */
-body .card.hide-bottom {
-  top: 1000px;
+/* line 53, ../sass/screen.scss */
+body .card.fullscreen {
+  width: 100vw;
+  height: 100vh;
+  top: 0px;
+  left: 0px;
 }
 /* line 60, ../sass/screen.scss */
+body .card.fullscreen a {
+  position: relative;
+  top: auto;
+  left: auto;
+  visibility: visible;
+}
+/* line 68, ../sass/screen.scss */
+body .card.fullscreen .img {
+  height: calc(100vh - 128px);
+  margin: 64px 0px 64px 64px;
+}
+/* line 74, ../sass/screen.scss */
+body .card.fullscreen .content {
+  margin-top: calc(50vh - 134px);
+  width: calc(60% - 192px);
+}
+/* line 81, ../sass/screen.scss */
+body .card.show {
+  left: calc(50% - 430px);
+  transform: scale(1);
+}
+/* line 87, ../sass/screen.scss */
+body .card.hide-left {
+  left: -100vw;
+  transform: scale(0.8);
+}
+/* line 93, ../sass/screen.scss */
+body .card.hide-right {
+  left: 100vw;
+  transform: scale(0.8);
+}
+/* line 99, ../sass/screen.scss */
+body .card:hover {
+  cursor: pointer;
+}
+/* line 106, ../sass/screen.scss */
 body .card .img {
   width: 40%;
   position: relative;
@@ -110,45 +145,168 @@ body .card .img {
   background-size: cover;
   background-position: center;
 }
-/* line 69, ../sass/screen.scss */
+/* line 115, ../sass/screen.scss */
 body .card .img:after {
   content: "";
   display: block;
   padding-top: 100%;
 }
-/* line 77, ../sass/screen.scss */
+/* line 123, ../sass/screen.scss */
 body .card .content {
+  width: calc(60% - 128px);
+  margin: 64px;
   position: relative;
   float: left;
-  margin: 64px;
-  width: calc(60% - 128px);
+  overflow: hidden;
 }
-/* line 85, ../sass/screen.scss */
+/* line 133, ../sass/screen.scss */
 body .card .content h2 {
   font-size: 32px;
   line-height: 32px;
   margin-bottom: 32px;
 }
-/* line 92, ../sass/screen.scss */
+/* line 140, ../sass/screen.scss */
 body .card .content .text-container {
   height: 140px;
   overflow: auto;
 }
-/* line 97, ../sass/screen.scss */
+/* line 145, ../sass/screen.scss */
 body .card .content .text-container p {
   font-size: 12px;
   font-family: arial;
   line-height: 16px;
 }
-/* line 104, ../sass/screen.scss */
+/* line 152, ../sass/screen.scss */
 body .card .content .text-container::-webkit-scrollbar {
   width: 3px;
 }
-/* line 109, ../sass/screen.scss */
+/* line 157, ../sass/screen.scss */
 body .card .content .text-container::-webkit-scrollbar-thumb {
   background: #F09819;
 }
-/* line 115, ../sass/screen.scss */
+/* line 163, ../sass/screen.scss */
 body .card .content .text-container::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+/* line 174, ../sass/screen.scss */
+body .card .content form input, body .card .content form textarea {
+  width: 100%;
+  height: 32px;
+  line-height: 32px;
+  border: 0px;
+  border-bottom: 2px solid black;
+  outline: 0px;
+  margin-bottom: 32px;
+  font-family: Arial;
+}
+/* line 186, ../sass/screen.scss */
+body .card .content form input::placeholder, body .card .content form textarea::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  opacity: 1;
+  /* Firefox */
+  color: #FF512F;
+}
+/* line 192, ../sass/screen.scss */
+body .card .content form input::-ms-input-placeholder, body .card .content form textarea::-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: #FF512F;
+}
+/* line 197, ../sass/screen.scss */
+body .card .content form input::-ms-input-placeholder, body .card .content form textarea::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: #FF512F;
+}
+/* line 204, ../sass/screen.scss */
+body .card .content form input[name="name"] {
+  margin-right: 64px;
+}
+/* line 209, ../sass/screen.scss */
+body .card .content form input[name="name"], body .card .content form input[name="surname"] {
+  width: calc(50% - 32px);
+  float: left;
+}
+/* line 215, ../sass/screen.scss */
+body .card .content form input[type="submit"] {
+  border: 2px solid black;
+  background-color: #ffffff;
+  line-height: 20px;
+  margin-bottom: 0px;
+  transition: all ease 0.7s;
+}
+/* line 224, ../sass/screen.scss */
+body .card .content form input[type="submit"]:hover {
+  cursor: pointer;
+  border: 2px solid #FF512F;
+}
+/* line 231, ../sass/screen.scss */
+body .card .content form textarea {
+  max-height: 64px;
+  color: #FF512F;
+}
+/* line 240, ../sass/screen.scss */
+body .card a {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  visibility: hidden;
+  float: left;
+  display: inline-block;
+  font-family: arial;
+  line-height: 32px;
+  color: black;
+  margin-right: 16px;
+  margin-top: 32px;
+}
+@media (max-width: 860px) {
+  /* line 35, ../sass/screen.scss */
+  body .card {
+    width: 420px;
+    height: 420px;
+    top: calc(50vh - 210px);
+  }
+  /* line 264, ../sass/screen.scss */
+  body .card .img {
+    width: 100%;
+  }
+  /* line 269, ../sass/screen.scss */
+  body .card .content {
+    width: 0px;
+    height: 0px;
+    overflow: hidden;
+  }
+  /* line 276, ../sass/screen.scss */
+  body .card.show {
+    left: calc(50% - 210px);
+  }
+  /* line 283, ../sass/screen.scss */
+  body .card.fullscreen a {
+    position: relative;
+    top: auto;
+    left: auto;
+    visibility: visible;
+  }
+  /* line 291, ../sass/screen.scss */
+  body .card.fullscreen .img {
+    width: 100%;
+    height: 30vh;
+    margin: 0px;
+  }
+  /* line 298, ../sass/screen.scss */
+  body .card.fullscreen .content {
+    margin: 64px;
+    width: calc(100% - 128px);
+    height: auto;
+  }
+}
+@media (max-width: 420px) {
+  /* line 35, ../sass/screen.scss */
+  body .card {
+    width: 360px;
+    height: 360px;
+    top: calc(50vh - 180px);
+  }
+  /* line 314, ../sass/screen.scss */
+  body .card.show {
+    left: calc(50% - 180px);
+  }
 }

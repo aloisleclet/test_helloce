@@ -1,42 +1,42 @@
-var current = 0;
+var current = document.getElementsByClassName('card').length - 1;
+var max = current;
+var min = 0;
+
 
 function transition (e)
 {
   let classname = "";
-  let last_actor = ""; 
-
-  //direction
- 
-  if (e.deltaY < 0) //go top
-  {
-    classname = "hide-top";
-    current = current - 1 < -1 ? current - 1 : current;
-  }
-  else // go bottom
-  {
-    classname = "hide-bottom";
-    current++;
-  }
- 
-  if (last_actor < 0)
-  {
-    console.log('border'+ current);
-    return;
-  }
- 
-  document.getElementById('actor' + current).classList.add(classname);
-  last_actor = 'actor'+current; 
-  //border
-
-  console.log (current + ' is in the range ?');
   
-  console.log('direction: '+classname);
 
+  //hide old card
+  
+  document.getElementById('actor'+current).classList.remove('show');
+  if (e.deltaX < 0) //go right
+  {
+    classname = "hide-right";
+    if (document.getElementById('actor'+current).classList.contains("hide-left")) //todo factor that ugly stuff
+      document.getElementById('actor'+current).classList.remove("hide-left");
+    document.getElementById('actor'+current).classList.add(classname);
+    current = current + 1 <= max ? current + 1 : current ;
+  }
+  else if (e.deltaX > 0)// go left
+  {
+    classname = "hide-left";
+    if (document.getElementById('actor'+current).classList.contains("hide-right"))
+      document.getElementById('actor'+current).classList.remove("hide-right");
+    document.getElementById('actor'+current).classList.add(classname);
+    current = current - 1 >= min ? current - 1 : current ;
+  }
  
-  let actor = 'actor'+current;
- 
-  console.log('actor: '+actor+' last_actor: '+last_actor);
-  document.getElementById(actor).classList.add('show');
+  //show new card  
+  document.getElementById('actor'+current).classList.add('show');
+  if (document.getElementById('actor'+current).classList.contains("fullscreen"))
+    document.getElementById('actor'+current).classList.remove("fullscreen");
+  if (document.getElementById('actor'+current).classList.contains("hide-right"))
+    document.getElementById('actor'+current).classList.remove("hide-right");
+  if (document.getElementById('actor'+current).classList.contains("hide-left"))
+    document.getElementById('actor'+current).classList.remove("hide-left");
+  console.log('actor: '+current);
 }
 
 function add_event()
@@ -45,8 +45,14 @@ function add_event()
   document.addEventListener("wheel", function (e)
   {
     transition(e);
-    setTimeout(add_event, 3000);// 3000 time of the transition
+    setTimeout(add_event, 700);// 700ms time of the transition
   }, {once : true});
 }
+
+document.addEventListener("click", function (e)
+{
+  document.getElementById('actor'+current).classList.add('fullscreen'); 
+  document.getElementById('actor'+current).classList.remove('show');
+});
 
 add_event();

@@ -11,10 +11,16 @@
 $bga: #F09819;
 $bgb: #FF512F;
 
-$card: #ffffff;
+$white: #ffffff;
 $black: black;
 
 /* main */
+
+html, body
+{
+  overflow:hidden;
+
+}
 
 body
 {
@@ -25,38 +31,78 @@ body
   background: -webkit-linear-gradient(to left, $bga, $bgb);
   background: linear-gradient(to left, $bga, $bgb);
   overflow:hidden;
-
+  
   .card
   {
     width:860px;
     height:auto;
      
     position:absolute;
-    top:-1000px;  
-    left:calc(50% - 430px);
+    top:calc(50vh - (344px / 2));  
+    left:2000px;
 
-    background-color:$card;
+    background-color:$white;
 
     box-shadow:10px 20px 100px -25px $black;
-    overflow:hidden;
 
-    transition:all ease 3s;
+
+    //transitions
+
+    transition:all ease 0.7s;
+
+    &.fullscreen
+    {
+      width:100vw;
+      height:100vh;
+      top:0px;
+      left:0px;
+
+      a
+      {
+        position:relative;
+        top:auto;
+        left:auto;
+        visibility:visible;
+      }
+
+      .img
+      {
+        height:calc(100vh - 128px);
+        margin:64px 0px 64px 64px; 
+      }
+
+      .content
+      {
+        margin-top:calc(50vh - 134px);
+        width: calc(60% - 192px);
+      }
+    }
 
     &.show
     {
-      top:calc(50% - 25vh);
+      left:calc(50% - 430px);
+      transform:scale(1);
     }
  
-    &.hide-top
+    &.hide-left
     {
-      top:-1000px;
+      left:-100vw;
+      transform:scale(0.8);
     }
 
-    &.hide-bottom
+    &.hide-right
     {
-      top:1000px;
+      left:100vw;
+      transform:scale(0.8);
     }
-   
+ 
+    &:hover
+    {
+      cursor:pointer
+    }
+ 
+    //content
+
     .img
     {
       width:40%;
@@ -76,11 +122,13 @@ body
     
     .content
     {
+      width:calc(60% - 128px);
+      margin:64px;
+      
       position:relative;
       float:left;
-      margin:64px;
-      width:calc(60% - 128px);
 
+      overflow:hidden;
 
       h2
       {
@@ -118,9 +166,158 @@ body
             -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
         }
       }
-    }
-  }
 
+      //form
+
+      form
+      {
+        input, textarea
+        {
+          width:100%;
+          height:32px;
+          line-height:32px;
+          border:0px;
+          border-bottom:2px solid $black;
+          outline:0px;
+
+          margin-bottom:32px;
+          font-family:Arial;
+
+          &::placeholder
+          { /* Chrome, Firefox, Opera, Safari 10.1+ */
+            opacity: 1; /* Firefox */
+            color: $bgb;
+          }
+          
+          &::-ms-input-placeholder
+          { /* Internet Explorer 10-11 */
+            color: $bgb;
+          }
+          
+          &::-ms-input-placeholder
+          { /* Microsoft Edge */
+            color: $bgb;
+          }
+
+        }
+
+        input[name="name"]
+        {
+          margin-right:64px;
+        }
+
+        input[name="name"], input[name="surname"]
+        {
+          width:calc(50% - 32px);
+          float:left;
+        }
+ 
+        input[type="submit"]
+        {
+          border:2px solid $black;
+          background-color:$white;
+          line-height:20px;
+          margin-bottom:0px;
+     
+          transition:all ease 0.7s;
+ 
+          &:hover
+          {
+            cursor:pointer;
+            border:2px solid $bgb;
+          }
+        }
+ 
+        textarea
+        {
+          max-height:64px;
+          color:$bgb;
+        } 
+      } 
+
+    }
+
+    a
+    {
+      position:absolute;
+      top:0px;
+      left:0px;
+      visibility:hidden;
+      
+      float:left;
+      display:inline-block; 
+   
+      font-family:arial;
+      line-height:32px;
+      color:$black;
+      margin-right:16px;
+      margin-top:32px;
+    }
+
+    //responsive
+    @media (max-width:860px)
+    {
+      width:420px;
+      height:420px;
+      top:calc(50vh - 210px);
+  
+      .img
+      {
+        width:100%;
+      }
+
+      .content
+      {
+        width:0px;
+        height:0px;
+        overflow:hidden;
+      }
+    
+      &.show
+      {
+        left:calc(50% - 210px);
+      }
+      
+      &.fullscreen
+      {
+        a
+        {
+          position:relative;
+          top:auto;
+          left:auto;
+          visibility:visible;
+        }
+
+        .img
+        {
+          width:100%;
+          height:30vh;
+          margin:0px;
+        }
+
+        .content
+        {
+          margin:64px;
+          width: calc(100% - 128px);
+          height:auto;
+        }
+      }
+ 
+    }
+
+    @media (max-width:420px)
+    {
+      width:360px;
+      height:360px;
+      top:calc(50vh - 180px);
+      
+      &.show
+      {
+        left:calc(50% - 180px);
+      }
+    }
+
+  }
 }
 
 
