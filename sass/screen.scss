@@ -41,6 +41,8 @@ body
     top:calc(50vh - (344px / 2));  
     left:2000px;
 
+    overflow:hidden;
+
     background-color:$white;
 
     box-shadow:10px 20px 100px -25px $black;
@@ -56,6 +58,11 @@ body
       height:100vh;
       top:0px;
       left:0px;
+
+      &:hover
+      {
+        cursor:auto;
+      }
 
       a
       {
@@ -299,10 +306,14 @@ body
         {
           margin:64px;
           width: calc(100% - 128px);
-          height:auto;
+          height: calc(70vh - 128px);
+
+          .text-container
+          {
+            height: calc(70vh - 256px);
+          }
         }
       }
- 
     }
 
     @media (max-width:420px)
