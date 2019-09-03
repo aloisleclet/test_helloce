@@ -1,0 +1,392 @@
+/* variables */
+
+$bga: #F09819;
+$bgb: #FF512F;
+
+$white: #ffffff;
+$black: black;
+
+/* reset css */
+
+@charset "UTF-8";
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+html {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+q, blockquote {
+  quotes: none;
+}
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+a img {
+  border: none;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
+  display: block;
+}
+
+
+/* main */
+
+html, body
+{
+  overflow:hidden;
+
+}
+
+body
+{
+
+  width:100%;
+  height:100vh;
+  background: #FF512F;
+  background: -webkit-linear-gradient(to left, $bga, $bgb);
+  background: linear-gradient(to left, $bga, $bgb);
+  overflow:hidden;
+  
+  .card
+  {
+    width:860px;
+    height:auto;
+     
+    position:absolute;
+    top:calc(50vh - (344px / 2));  
+    left:2000px;
+
+    overflow:hidden;
+
+    background-color:$white;
+
+    box-shadow:10px 20px 100px -25px $black;
+
+
+    //transitions
+
+    transition:all ease 0.7s;
+
+    &.fullscreen
+    {
+      width:100vw;
+      height:100vh;
+      top:0px;
+      left:0px;
+
+      &:hover
+      {
+        cursor:auto;
+      }
+
+      a
+      {
+        position:relative;
+        top:auto;
+        left:auto;
+        visibility:visible;
+      }
+
+      .img
+      {
+        height:calc(100vh - 128px);
+        margin:64px 0px 64px 64px; 
+      }
+
+      .content
+      {
+        margin-top:calc(50vh - 134px);
+        width: calc(60% - 192px);
+      }
+    }
+
+    &.show
+    {
+      left:calc(50% - 430px);
+      transform:scale(1);
+    }
+ 
+    &.hide-left
+    {
+      left:-100vw;
+      transform:scale(0.8);
+    }
+
+    &.hide-right
+    {
+      left:100vw;
+      transform:scale(0.8);
+    }
+ 
+    &:hover
+    {
+      cursor:pointer
+    }
+ 
+    //content
+
+    .img
+    {
+      width:40%;
+      position:relative;
+      float:left;
+
+      background-size:cover;
+      background-position:center;
+      
+      &:after
+      {
+        content: "";
+        display: block;
+        padding-top:100%;
+      }
+    }
+    
+    .content
+    {
+      width:calc(60% - 128px);
+      margin:64px;
+      
+      position:relative;
+      float:left;
+
+      overflow:hidden;
+
+      h2
+      {
+        font-size:32px;
+        line-height:32px;
+        margin-bottom:32px;
+      }
+
+      .text-container
+      {
+        height:140px;
+        overflow:auto;
+       
+        &:hover
+        {
+          cursor:grab;
+        }
+ 
+        p
+        {
+          font-size:12px;
+          font-family:arial;
+          line-height:16px;
+
+          &::selection
+          {
+           background: transparent; /* WebKit/Blink Browsers */
+          }
+
+          &::-moz-selection {
+           background: transparent; /* Gecko Browsers */
+          }
+        }
+
+        &::-webkit-scrollbar
+        {
+          width:3px;
+        }
+      
+        &::-webkit-scrollbar-thumb
+        {
+          background:$bga;
+        }   
+
+
+        &::-webkit-scrollbar-track
+        {
+          
+            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+        }
+      }
+
+      //form
+
+      form
+      {
+        input, textarea
+        {
+          width:100%;
+          height:32px;
+          line-height:32px;
+          border:0px;
+          border-bottom:2px solid $black;
+          outline:0px;
+
+          margin-bottom:32px;
+          font-family:Arial;
+
+        }
+
+        input[name="name"]
+        {
+          margin-right:64px;
+        }
+
+        input[name="name"], input[name="surname"]
+        {
+          width:calc(50% - 32px);
+          float:left;
+        }
+ 
+        input[type="submit"]
+        {
+          border:2px solid $black;
+          background-color:$white;
+          line-height:20px;
+          margin-bottom:0px;
+     
+          transition:all ease 0.7s;
+ 
+          &:hover
+          {
+            cursor:pointer;
+            border:2px solid $bgb;
+          }
+        }
+ 
+        textarea
+        {
+          max-height:64px;
+          color:$black;
+        } 
+      } 
+
+      .errors
+      {
+        margin-top:16px;
+        color:$bgb;
+        font-family:Arial;
+      }
+
+    }
+
+    a
+    {
+      position:absolute;
+      top:0px;
+      left:0px;
+      visibility:hidden;
+      
+      float:left;
+      display:inline-block; 
+   
+      font-family:arial;
+      line-height:32px;
+      color:$black;
+      margin-right:16px;
+      margin-top:32px;
+    }
+
+    //responsive
+    @media (max-width:860px)
+    {
+      width:420px;
+      height:420px;
+      top:calc(50vh - 210px);
+  
+      .img
+      {
+        width:100%;
+      }
+
+      .content
+      {
+        width:0px;
+        height:0px;
+        overflow:hidden;
+      }
+    
+      &.show
+      {
+        left:calc(50% - 210px);
+      }
+      
+      &.fullscreen
+      {
+        a
+        {
+          position:relative;
+          top:auto;
+          left:auto;
+          visibility:visible;
+        }
+
+        .img
+        {
+          width:100%;
+          height:30vh;
+          margin:0px;
+        }
+
+        .content
+        {
+          margin:64px;
+          width: calc(100% - 128px);
+          height: calc(70vh - 128px);
+
+          .text-container
+          {
+            height: calc(70vh - 256px);
+          }
+        }
+      }
+    }
+
+    @media (max-width:420px)
+    {
+      width:360px;
+      height:360px;
+      top:calc(50vh - 180px);
+      
+      &.show
+      {
+        left:calc(50% - 180px);
+      }
+    }
+
+  }
+}
+
+
+

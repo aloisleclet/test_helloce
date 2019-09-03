@@ -1,0 +1,409 @@
+/* variables */
+
+/* reset css */
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+html {
+  line-height: 1;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+caption,
+th,
+td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+q,
+blockquote {
+  quotes: none;
+}
+
+q:before,
+q:after,
+blockquote:before,
+blockquote:after {
+  content: "";
+  content: none;
+}
+
+a img {
+  border: none;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+summary {
+  display: block;
+}
+
+/* main */
+
+html,
+body {
+  overflow: hidden;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  background: #FF512F;
+  background: linear-gradient(to left, #F09819, #FF512F);
+  overflow: hidden;
+}
+
+body .card {
+  width: 860px;
+  height: auto;
+  position: absolute;
+  top: calc(50vh - (344px / 2));
+  left: 2000px;
+  overflow: hidden;
+  background-color: #ffffff;
+  box-shadow: 10px 20px 100px -25px black;
+  transition: all ease 0.7s;
+}
+
+body .card.fullscreen {
+  width: 100vw;
+  height: 100vh;
+  top: 0px;
+  left: 0px;
+}
+
+body .card.fullscreen:hover {
+  cursor: auto;
+}
+
+body .card.fullscreen a {
+  position: relative;
+  top: auto;
+  left: auto;
+  visibility: visible;
+}
+
+body .card.fullscreen .img {
+  height: calc(100vh - 128px);
+  margin: 64px 0px 64px 64px;
+}
+
+body .card.fullscreen .content {
+  margin-top: calc(50vh - 134px);
+  width: calc(60% - 192px);
+}
+
+body .card.show {
+  left: calc(50% - 430px);
+  transform: scale(1);
+}
+
+body .card.hide-left {
+  left: -100vw;
+  transform: scale(0.8);
+}
+
+body .card.hide-right {
+  left: 100vw;
+  transform: scale(0.8);
+}
+
+body .card:hover {
+  cursor: pointer;
+}
+
+body .card .img {
+  width: 40%;
+  position: relative;
+  float: left;
+  background-size: cover;
+  background-position: center;
+}
+
+body .card .img:after {
+  content: "";
+  display: block;
+  padding-top: 100%;
+}
+
+body .card .content {
+  width: calc(60% - 128px);
+  margin: 64px;
+  position: relative;
+  float: left;
+  overflow: hidden;
+}
+
+body .card .content h2 {
+  font-size: 32px;
+  line-height: 32px;
+  margin-bottom: 32px;
+}
+
+body .card .content .text-container {
+  height: 140px;
+  overflow: auto;
+}
+
+body .card .content .text-container:hover {
+  cursor: -webkit-grab;
+  cursor: grab;
+}
+
+body .card .content .text-container p {
+  font-size: 12px;
+  font-family: arial;
+  line-height: 16px;
+}
+
+body .card .content .text-container p::-moz-selection {
+  background: transparent;
+  /* WebKit/Blink Browsers */
+}
+
+body .card .content .text-container p::selection {
+  background: transparent;
+  /* WebKit/Blink Browsers */
+}
+
+body .card .content .text-container p::-moz-selection {
+  background: transparent;
+  /* Gecko Browsers */
+}
+
+body .card .content .text-container::-webkit-scrollbar {
+  width: 3px;
+}
+
+body .card .content .text-container::-webkit-scrollbar-thumb {
+  background: #F09819;
+}
+
+body .card .content .text-container::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+body .card .content form input,
+body .card .content form textarea {
+  width: 100%;
+  height: 32px;
+  line-height: 32px;
+  border: 0px;
+  border-bottom: 2px solid black;
+  outline: 0px;
+  margin-bottom: 32px;
+  font-family: Arial;
+}
+
+body .card .content form input[name=name] {
+  margin-right: 64px;
+}
+
+body .card .content form input[name=name],
+body .card .content form input[name=surname] {
+  width: calc(50% - 32px);
+  float: left;
+}
+
+body .card .content form input[type=submit] {
+  border: 2px solid black;
+  background-color: #ffffff;
+  line-height: 20px;
+  margin-bottom: 0px;
+  transition: all ease 0.7s;
+}
+
+body .card .content form input[type=submit]:hover {
+  cursor: pointer;
+  border: 2px solid #FF512F;
+}
+
+body .card .content form textarea {
+  max-height: 64px;
+  color: black;
+}
+
+body .card .content .errors {
+  margin-top: 16px;
+  color: #FF512F;
+  font-family: Arial;
+}
+
+body .card a {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  visibility: hidden;
+  float: left;
+  display: inline-block;
+  font-family: arial;
+  line-height: 32px;
+  color: black;
+  margin-right: 16px;
+  margin-top: 32px;
+}
+
+@media (max-width: 860px) {
+  body .card {
+    width: 420px;
+    height: 420px;
+    top: calc(50vh - 210px);
+  }
+
+  body .card .img {
+    width: 100%;
+  }
+
+  body .card .content {
+    width: 0px;
+    height: 0px;
+    overflow: hidden;
+  }
+
+  body .card.show {
+    left: calc(50% - 210px);
+  }
+
+  body .card.fullscreen a {
+    position: relative;
+    top: auto;
+    left: auto;
+    visibility: visible;
+  }
+
+  body .card.fullscreen .img {
+    width: 100%;
+    height: 30vh;
+    margin: 0px;
+  }
+
+  body .card.fullscreen .content {
+    margin: 64px;
+    width: calc(100% - 128px);
+    height: calc(70vh - 128px);
+  }
+
+  body .card.fullscreen .content .text-container {
+    height: calc(70vh - 256px);
+  }
+}
+
+@media (max-width: 420px) {
+  body .card {
+    width: 360px;
+    height: 360px;
+    top: calc(50vh - 180px);
+  }
+
+  body .card.show {
+    left: calc(50% - 180px);
+  }
+}
+
