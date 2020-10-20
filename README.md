@@ -1,6 +1,10 @@
 # test_helloce
 A simple laravel example website
 
-# get started
+## getting started
 
+```
 ./setup.sh
+```
+
+##### #laravel #php
